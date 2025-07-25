@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Setup Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .step { background: #f8f9fa; padding: 20px; margin: 20px 0; border-radius: 8px; }
+        .code { background: #333; color: #fff; padding: 15px; border-radius: 5px; margin: 10px 0; }
+        .highlight { background: #e8f5e8; padding: 10px; border-left: 4px solid #28a745; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Website Analytics Setup Guide</h1>
+    
+    <div class="highlight">
+        <h3>Why Add Analytics?</h3>
+        <ul>
+            <li>Track visitor count and behavior</li>
+            <li>See which products are popular</li>
+            <li>Monitor conversion rates</li>
+            <li>Understand your customers better</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h2>Option 1: Google Analytics (Free & Detailed)</h2>
+        
+        <h3>Step 1: Create Google Analytics Account</h3>
+        <ol>
+            <li>Go to <a href="https://analytics.google.com" target="_blank">analytics.google.com</a></li>
+            <li>Sign in with your Google account</li>
+            <li>Click "Start measuring"</li>
+            <li>Create a new property for your website</li>
+            <li>Enter your website URL (your GitHub Pages URL)</li>
+        </ol>
+
+        <h3>Step 2: Get Your Tracking Code</h3>
+        <p>Google will provide you with a tracking code that looks like this:</p>
+        <div class="code">
+&lt;!-- Google Analytics --&gt;
+&lt;script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"&gt;&lt;/script&gt;
+&lt;script&gt;
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_TRACKING_ID');
+&lt;/script&gt;
+        </div>
+
+        <h3>Step 3: Add to Your Website</h3>
+        <p>Add the tracking code to the &lt;head&gt; section of your index.html file, right after the EmailJS script tag.</p>
+    </div>
+
+    <div class="step">
+        <h2>Option 2: Simple Counter (Easy)</h2>
+        
+        <h3>StatCounter (Free with limitations)</h3>
+        <ol>
+            <li>Visit <a href="https://statcounter.com" target="_blank">statcounter.com</a></li>
+            <li>Sign up for free account</li>
+            <li>Add your website URL</li>
+            <li>Get the HTML code</li>
+            <li>Add to your website footer</li>
+        </ol>
+
+        <h3>What you'll get:</h3>
+        <ul>
+            <li>Visitor count</li>
+            <li>Page views</li>
+            <li>Countries/locations</li>
+            <li>Basic referral sources</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h2>Option 3: GitHub Pages Traffic (Built-in)</h2>
+        
+        <h3>How to Check GitHub Traffic:</h3>
+        <ol>
+            <li>Go to your repository on GitHub</li>
+            <li>Click "Insights" tab</li>
+            <li>Click "Traffic" in left sidebar</li>
+            <li>View last 14 days of data</li>
+        </ol>
+
+        <h3>Limitations:</h3>
+        <ul>
+            <li>Only shows last 14 days</li>
+            <li>Basic metrics only</li>
+            <li>No real-time data</li>
+            <li>No detailed user behavior</li>
+        </ul>
+    </div>
+
+    <div class="step">
+        <h2>For E-commerce Specifically</h2>
+        
+        <h3>Enhanced E-commerce Tracking</h3>
+        <p>Since you have an online store, you might want to track:</p>
+        <ul>
+            <li>Product page views</li>
+            <li>Add to cart events</li>
+            <li>Checkout process</li>
+            <li>Order completions</li>
+            <li>Revenue tracking</li>
+        </ul>
+
+        <p><strong>Recommendation:</strong> Start with Google Analytics as it's free and provides comprehensive e-commerce tracking.</p>
+    </div>
+
+    <div class="step">
+        <h2>Your GitHub Pages URL</h2>
+        <p>Your website should be accessible at:</p>
+        <div class="code">
+            https://amaarkhan.github.io/e-commerce-website/
+        </div>
+        <p>Use this URL when setting up analytics services.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamWear - Premium Women's Night Suits</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- EmailJS for sending emails -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
+    <!-- Google Analytics (Replace GA_TRACKING_ID with your actual tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_TRACKING_ID');
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2><i class="fas fa-moon"></i> DreamWear</h2>
+                </div>
+                
+                <div class="nav-menu" id="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#home" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#products" class="nav-link">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#about" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#contact" class="nav-link">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="tracking.html" class="nav-link">
+                                <i class="fas fa-truck"></i> Track Order
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-icons">
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Search products...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="cart-icon" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </div>
+                    <div class="hamburger" id="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Dream in Comfort & Style</h1>
+            <p>Discover our premium collection of women's night suits crafted for ultimate comfort and elegance</p>
+            <button class="cta-button" onclick="scrollToSection('products')">
+                Shop Now <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Women's Night Suits">
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Our Night Suit Collection</h2>
+            
+            <div class="filters">
+                <button class="filter-btn active" onclick="filterProducts('all')">All</button>
+            </div>
+
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About DreamWear</h2>
+                    <p>DreamWear specializes in premium women's night suits crafted for ultimate comfort and elegance. Each piece is carefully selected to ensure you sleep in style and wake up refreshed.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-shipping-fast"></i>
+                            <h3>Fast Shipping</h3>
+                            <p>Free shipping on orders over $50</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-leaf"></i>
+                            <h3>Premium Fabrics</h3>
+                            <p>Silk, cotton, and modal materials</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-ruler"></i>
+                            <h3>Perfect Fit</h3>
+                            <p>Available in Small, Medium & Large</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="About Us">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Address</h3>
+                        <p>123 Shopping Street, Commerce City, CC 12345</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <h3>Phone</h3>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>info@dreamwear.com</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-shopping-bag"></i> ShopHub</h3>
+                    <p>Your premier destination for quality products and exceptional service.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="orders.html">Order Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="tracking.html">Track Your Order</a></li>
+                        <li><a href="tracking-guide.html">Tracking Guide</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for updates and special offers</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Your email">
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ShopHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: Rs<span id="cart-total">0.00</span></strong>
+            </div>
+            <button class="checkout-btn" onclick="startCheckout()">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkout-modal">
+        <div class="checkout-content">
+            <div class="checkout-header">
+                <h2>Checkout</h2>
+                <button class="close-checkout" onclick="closeCheckout()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="checkout-body">
+                <div class="checkout-steps">
+                    <div class="step active" data-step="1">
+                        <span class="step-number">1</span>
+                        <span class="step-label">Shipping Info</span>
+                    </div>
+                    <div class="step" data-step="2">
+                        <span class="step-number">2</span>
+                        <span class="step-label">Payment</span>
+                    </div>
+                    <div class="step" data-step="3">
+                        <span class="step-number">3</span>
+                        <span class="step-label">Review</span>
+                    </div>
+                </div>
+
+                <form id="checkout-form" class="checkout-form">
+                    <!-- Step 1: Shipping Information -->
+                    <div class="checkout-step" id="step-1">
+                        <h3>Shipping Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="address">Street Address *</label>
+                                <input type="text" id="address" name="address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="zipCode">ZIP Code *</label>
+                                <input type="text" id="zipCode" name="zipCode" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="state">State/Province *</label>
+                                <input type="text" id="state" name="state" required>
+                            </div>
+                        </div>
+                        <div class="checkout-actions">
+                            <button type="button" class="btn-next" onclick="nextStep()">Continue to Payment</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Payment Information -->
+                    <div class="checkout-step hidden" id="step-2">
+                        <h3>Payment Information</h3>
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <input type="radio" id="cod" name="paymentMethod" value="cod" checked>
+                                <label for="cod">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    Cash on Delivery
+                                </label>
+                            </div>
+                            <div class="payment-method">
+                                <input type="radio" id="bank-transfer" name="paymentMethod" value="bank-transfer">
+                                <label for="bank-transfer">
+                                    <i class="fas fa-university"></i>
+                                    Bank Transfer
+                                </label>
+                            </div>
+                            <div class="payment-method">
+                                <input type="radio" id="card" name="paymentMethod" value="card">
+                                <label for="card">
+                                    <i class="fas fa-credit-card"></i>
+                                    Credit/Debit Card
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Bank Transfer Details (shown when bank transfer is selected) -->
+                        <div class="bank-details hidden" id="bank-details">
+                            <h4>Bank Transfer Details</h4>
+                            <div class="bank-info">
+                                <p><strong>Bank Name:</strong> ShopHub Bank</p>
+                                <p><strong>Account Name:</strong> ShopHub Store</p>
+                                <p><strong>Account Number:</strong> 1234567890</p>
+                                <p><strong>Routing Number:</strong> 987654321</p>
+                                <p class="note">Please include your order number in the transfer reference.</p>
+                            </div>
+                        </div>
+
+                        <!-- Card Details (shown when card is selected) -->
+                        <div class="card-details hidden" id="card-details">
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label for="cardNumber">Card Number</label>
+                                    <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456">
+                                </div>
+                                <div class="form-group">
+                                    <label for="expiryDate">Expiry Date</label>
+                                    <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" name="cvv" placeholder="123">
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="cardName">Name on Card</label>
+                                    <input type="text" id="cardName" name="cardName">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="checkout-actions">
+                            <button type="button" class="btn-back" onclick="prevStep()">Back</button>
+                            <button type="button" class="btn-next" onclick="nextStep()">Review Order</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Order Review -->
+                    <div class="checkout-step hidden" id="step-3">
+                        <h3>Order Review</h3>
+                        <div class="order-summary">
+                            <div class="order-items" id="order-items-review">
+                                <!-- Order items will be populated here -->
+                            </div>
+                            <div class="order-totals">
+                                <div class="total-line">
+                                    <span>Subtotal:</span>
+                                    <span id="order-subtotal">$0.00</span>
+                                </div>
+                                <div class="total-line">
+                                    <span>Shipping:</span>
+                                    <span id="order-shipping">$5.99</span>
+                                </div>
+                                <div class="total-line">
+                                    <span>Tax:</span>
+                                    <span id="order-tax">$0.00</span>
+                                </div>
+                                <div class="total-line grand-total">
+                                    <span>Total:</span>
+                                    <span id="order-grand-total">$0.00</span>
+                                </div>
+                            </div>
+                            
+                            <div class="shipping-info-review">
+                                <h4>Shipping Address</h4>
+                                <div id="shipping-address-review"></div>
+                            </div>
+                            
+                            <div class="payment-info-review">
+                                <h4>Payment Method</h4>
+                                <div id="payment-method-review"></div>
+                            </div>
+                        </div>
+
+                        <div class="checkout-actions">
+                            <button type="button" class="btn-back" onclick="prevStep()">Back</button>
+                            <button type="submit" class="btn-place-order">Place Order</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div class="order-confirmation-modal" id="order-confirmation-modal">
+        <div class="confirmation-content">
+            <div class="confirmation-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Order Placed Successfully!</h2>
+            <p>Thank you for your order. We'll send you a confirmation email shortly.</p>
+            
+            <div class="order-details">
+                <h3>Order Details</h3>
+                <div class="order-info">
+                    <p><strong>Order Number:</strong> <span id="order-number"></span></p>
+                    <p><strong>Total Amount:</strong> <span id="confirmation-total"></span></p>
+                    <p><strong>Payment Method:</strong> <span id="confirmation-payment"></span></p>
+                    <p><strong>Estimated Delivery:</strong> <span id="estimated-delivery"></span></p>
+                </div>
+            </div>
+            
+            <div class="confirmation-actions">
+                <button class="btn-primary" onclick="closeOrderConfirmation()">Continue Shopping</button>
+                <button class="btn-secondary" onclick="viewOrderDetails()">View Order Details</button>
+                <button class="btn-track-order" onclick="trackCurrentOrder()">
+                    <i class="fas fa-truck"></i> Track Order
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="visitor-counter.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

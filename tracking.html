@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking - ShopHub</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .tracking-container {
+            max-width: 800px;
+            margin: 120px auto 80px;
+            padding: 0 20px;
+        }
+        
+        .tracking-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .tracking-input {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tracking-input input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .tracking-input input:focus {
+            border-color: #e74c3c;
+        }
+        
+        .track-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .track-btn:hover {
+            background: #c0392b;
+        }
+        
+        .tracking-result {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: none;
+        }
+        
+        .order-header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .order-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .info-item {
+            text-align: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .info-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-value {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .tracking-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .tracking-timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #ddd;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            left: -1.5rem;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: white;
+        }
+        
+        .timeline-icon.completed {
+            background: #28a745;
+        }
+        
+        .timeline-icon.current {
+            background: #e74c3c;
+        }
+        
+        .timeline-icon.pending {
+            background: #ddd;
+            color: #666;
+        }
+        
+        .timeline-content {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #e74c3c;
+        }
+        
+        .timeline-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-date {
+            color: #888;
+            font-size: 0.8rem;
+        }
+        
+        .no-order {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+        
+        .no-order i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+        
+        @media (max-width: 768px) {
+            .tracking-input {
+                flex-direction: column;
+            }
+            
+            .order-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header (same as main site) -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit;">
+                        <h2><i class="fas fa-shopping-bag"></i> ShopHub</h2>
+                    </a>
+                </div>
+                
+                <div class="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="index.html#home" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html#products" class="nav-link">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html#about" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html#contact" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-icons">
+                    <a href="index.html" class="back-to-store" style="background: #e74c3c; color: white; padding: 8px 16px; text-decoration: none; border-radius: 5px;">
+                        <i class="fas fa-store"></i> Back to Store
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="tracking-container">
+        <div class="tracking-form">
+            <h2>Track Your Order</h2>
+            <p>Enter your order number to track your package</p>
+            
+            <div class="tracking-input">
+                <input type="text" id="order-number-input" placeholder="Enter your order number (e.g., ORD-1234567890)" maxlength="50">
+                <button class="track-btn" onclick="trackOrder()">
+                    <i class="fas fa-search"></i> Track Order
+                </button>
+            </div>
+            
+            <small style="color: #666;">
+                <i class="fas fa-info-circle"></i>
+                You can find your order number in your confirmation email or receipt.
+            </small>
+        </div>
+
+        <div class="tracking-result" id="tracking-result">
+            <!-- Tracking results will be populated here -->
+        </div>
+
+        <div class="no-order" id="no-order" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>Order Not Found</h3>
+            <p>Please check your order number and try again.</p>
+        </div>
+    </div>
+
+    <script>
+        // Load orders from localStorage
+        function loadOrders() {
+            const savedOrders = localStorage.getItem('shophub_orders');
+            return savedOrders ? JSON.parse(savedOrders) : [];
+        }
+
+        // Generate tracking timeline based on order status and date
+        function generateTrackingTimeline(order) {
+            const orderDate = new Date(order.date);
+            const currentDate = new Date();
+            
+            const timeline = [
+                {
+                    title: 'Order Confirmed',
+                    description: 'Your order has been received and confirmed',
+                    icon: 'fas fa-check',
+                    status: 'completed',
+                    date: orderDate
+                },
+                {
+                    title: 'Processing',
+                    description: 'Your order is being prepared for shipment',
+                    icon: 'fas fa-cog',
+                    status: order.status === 'confirmed' ? 'current' : (order.status === 'processing' || order.status === 'shipped' || order.status === 'delivered') ? 'completed' : 'pending',
+                    date: order.status === 'processing' || order.status === 'shipped' || order.status === 'delivered' ? new Date(orderDate.getTime() + 24 * 60 * 60 * 1000) : null
+                },
+                {
+                    title: 'Shipped',
+                    description: 'Your order has been shipped and is on its way',
+                    icon: 'fas fa-truck',
+                    status: order.status === 'processing' ? 'current' : (order.status === 'shipped' || order.status === 'delivered') ? 'completed' : 'pending',
+                    date: order.status === 'shipped' || order.status === 'delivered' ? new Date(orderDate.getTime() + 2 * 24 * 60 * 60 * 1000) : null
+                },
+                {
+                    title: 'Out for Delivery',
+                    description: 'Your order is out for delivery',
+                    icon: 'fas fa-shipping-fast',
+                    status: order.status === 'shipped' ? 'current' : order.status === 'delivered' ? 'completed' : 'pending',
+                    date: order.status === 'delivered' ? new Date(orderDate.getTime() + 4 * 24 * 60 * 60 * 1000) : null
+                },
+                {
+                    title: 'Delivered',
+                    description: 'Your order has been delivered successfully',
+                    icon: 'fas fa-home',
+                    status: order.status === 'delivered' ? 'completed' : 'pending',
+                    date: order.status === 'delivered' ? new Date(orderDate.getTime() + 5 * 24 * 60 * 60 * 1000) : null
+                }
+            ];
+
+            return timeline;
+        }
+
+        // Format payment method
+        function formatPaymentMethod(method) {
+            switch (method) {
+                case 'cod': return 'Cash on Delivery';
+                case 'bank-transfer': return 'Bank Transfer';
+                case 'card': return 'Credit/Debit Card';
+                default: return method;
+            }
+        }
+
+        // Track order function
+        function trackOrder() {
+            const orderNumber = document.getElementById('order-number-input').value.trim();
+            
+            if (!orderNumber) {
+                alert('Please enter an order number');
+                return;
+            }
+
+            const orders = loadOrders();
+            const order = orders.find(o => o.orderNumber.toLowerCase() === orderNumber.toLowerCase());
+
+            const trackingResult = document.getElementById('tracking-result');
+            const noOrderDiv = document.getElementById('no-order');
+
+            if (!order) {
+                trackingResult.style.display = 'none';
+                noOrderDiv.style.display = 'block';
+                return;
+            }
+
+            noOrderDiv.style.display = 'none';
+            
+            const timeline = generateTrackingTimeline(order);
+            const estimatedDelivery = new Date(new Date(order.date).getTime() + 5 * 24 * 60 * 60 * 1000);
+
+            trackingResult.innerHTML = `
+                <div class="order-header">
+                    <h2>Order ${order.orderNumber}</h2>
+                    <p>Placed on ${new Date(order.date).toLocaleDateString()}</p>
+                </div>
+
+                <div class="order-info">
+                    <div class="info-item">
+                        <div class="info-label">Order Status</div>
+                        <div class="info-value">
+                            <span class="order-status status-${order.status}">
+                                ${order.status.charAt(0).toUpperCase() + order.status.slice(1)}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Total Amount</div>
+                        <div class="info-value">$${order.totals.total.toFixed(2)}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Payment Method</div>
+                        <div class="info-value">${formatPaymentMethod(order.payment.method)}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Estimated Delivery</div>
+                        <div class="info-value">${estimatedDelivery.toLocaleDateString()}</div>
+                    </div>
+                </div>
+
+                <h3>Tracking Timeline</h3>
+                <div class="tracking-timeline">
+                    ${timeline.map(item => `
+                        <div class="timeline-item">
+                            <div class="timeline-icon ${item.status}">
+                                <i class="${item.icon}"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">${item.title}</div>
+                                <div class="timeline-description">${item.description}</div>
+                                ${item.date ? `<div class="timeline-date">${item.date.toLocaleDateString()} ${item.date.toLocaleTimeString()}</div>` : ''}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <h3>Shipping Address</h3>
+                <div class="info-item">
+                    <div style="text-align: left;">
+                        ${order.customer.firstName} ${order.customer.lastName}<br>
+                        ${order.customer.address}<br>
+                        ${order.customer.city}, ${order.customer.state} ${order.customer.zipCode}<br>
+                        ${order.customer.phone}
+                    </div>
+                </div>
+
+                <h3>Order Items</h3>
+                <div class="order-items">
+                    ${order.items.map(item => `
+                        <div class="order-item">
+                            <img src="${item.image}" alt="${item.name}">
+                            <div class="order-item-info">
+                                <div class="order-item-name">${item.name}</div>
+                                <div class="order-item-details">Quantity: ${item.quantity}</div>
+                            </div>
+                            <div class="order-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            trackingResult.style.display = 'block';
+            trackingResult.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Allow enter key to track order
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('order-number-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    trackOrder();
+                }
+            });
+
+            // Check if order number is passed as URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderParam = urlParams.get('order');
+            if (orderParam) {
+                document.getElementById('order-number-input').value = orderParam;
+                trackOrder();
+            }
+        });
+
+        // Export function for global access
+        window.trackOrder = trackOrder;
+    </script>
+</body>
+</html>

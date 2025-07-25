@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailJS Test</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <h1>EmailJS Test Page</h1>
+    <p>Open the browser console (F12) and run: <code>testEmailJS()</code></p>
+    
+    <button onclick="testEmailJS()">Test Email</button>
+    
+    <script>
+        // Initialize EmailJS
+        emailjs.init('5nivqhNinSfXdeTU5');
+        
+        function testEmailJS() {
+            const testParams = {
+                // Email recipient  
+                email: "your.email@gmail.com", // CHANGE THIS TO YOUR EMAIL
+                to_name: "Test User",
+                
+                // Order details
+                order_id: "TEST-001",
+                
+                // Orders array for the loop in your template
+                orders: [
+                    {
+                        name: "Test Product 1",
+                        image_url: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                        units: 2,
+                        price: "159.98"
+                    },
+                    {
+                        name: "Test Product 2", 
+                        image_url: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                        units: 1,
+                        price: "79.99"
+                    }
+                ],
+                
+                // Cost breakdown
+                cost: {
+                    shipping: "5.99",
+                    tax: "19.20",
+                    total: "265.16"
+                },
+                
+                // Additional info
+                order_date: new Date().toLocaleDateString(),
+                estimated_delivery: new Date().toLocaleDateString(),
+                customer_name: "Test User",
+                shipping_address: "123 Test St, Test City, TC 12345",
+                payment_method: "Credit Card"
+            };
+            
+            console.log('Testing EmailJS with parameters:', testParams);
+            
+            emailjs.send('service_9n2rlr5', 'template_icysguc', testParams)
+                .then(function(response) {
+                    console.log('✅ Test email sent successfully!', response);
+                    alert('✅ Test email sent successfully!');
+                })
+                .catch(function(error) {
+                    console.error('❌ Test email failed:', error);
+                    alert('❌ Test email failed. Check console for details.');
+                });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!-- Updated EmailJS Template with Tracking Link -->
+<!-- Add this to your EmailJS template to include tracking functionality -->
+
+<div
+  style="
+    font-family: system-ui, sans-serif, Arial;
+    font-size: 14px;
+    color: #333;
+    padding: 14px 8px;
+    background-color: #f5f5f5;
+  "
+>
+  <div style="max-width: 600px; margin: auto; background-color: #fff">
+    <div style="border-top: 6px solid #458500; padding: 16px">
+      <a
+        style="text-decoration: none; outline: none; margin-right: 8px; vertical-align: middle"
+        href="{{website_url}}"
+        target="_blank"
+      >
+        <img
+          style="height: 32px; vertical-align: middle"
+          height="32px"
+          src="cid:logo.png"
+          alt="logo"
+        />
+      </a>
+      <span
+        style="
+          font-size: 16px;
+          vertical-align: middle;
+          border-left: 1px solid #333;
+          padding-left: 8px;
+        "
+      >
+        <strong>Thank You for Your Order</strong>
+      </span>
+    </div>
+    <div style="padding: 0 16px">
+      <p>We'll send you tracking information when the order ships.</p>
+      
+      <!-- Tracking Section -->
+      <div style="background: #e8f5e8; padding: 16px; margin: 16px 0; border-radius: 8px; text-align: center;">
+        <h3 style="margin: 0 0 8px 0; color: #28a745;">
+          <i class="fas fa-truck"></i> Track Your Order
+        </h3>
+        <p style="margin: 8px 0;">Order Number: <strong>{{order_id}}</strong></p>
+        <a href="{{tracking_url}}" 
+           style="
+             background: #28a745; 
+             color: white; 
+             padding: 12px 24px; 
+             text-decoration: none; 
+             border-radius: 6px; 
+             display: inline-block; 
+             margin-top: 8px;
+             font-weight: bold;
+           " 
+           target="_blank">
+          🚚 Track Your Order Now
+        </a>
+      </div>
+      
+      <div
+        style="
+          text-align: left;
+          font-size: 14px;
+          padding-bottom: 4px;
+          border-bottom: 2px solid #333;
+        "
+      >
+        <strong>Order # {{order_id}}</strong>
+      </div>
+      {{#orders}}
+      <table style="width: 100%; border-collapse: collapse">
+        <tr style="vertical-align: top">
+          <td style="padding: 24px 8px 0 4px; display: inline-block; width: max-content">
+            <img style="height: 64px" height="64px" src="{{image_url}}" alt="item" />
+          </td>
+          <td style="padding: 24px 8px 0 8px; width: 100%">
+            <div>{{name}}</div>
+            <div style="font-size: 14px; color: #888; padding-top: 4px">QTY: {{units}}</div>
+          </td>
+          <td style="padding: 24px 4px 0 0; white-space: nowrap">
+            <strong>${{price}}</strong>
+          </td>
+        </tr>
+      </table>
+      {{/orders}}
+      <div style="padding: 24px 0">
+        <div style="border-top: 2px solid #333"></div>
+      </div>
+      <table style="border-collapse: collapse; width: 100%; text-align: right">
+        <tr>
+          <td style="width: 60%"></td>
+          <td>Shipping</td>
+          <td style="padding: 8px; white-space: nowrap">${{cost.shipping}}</td>
+        </tr>
+        <tr>
+          <td style="width: 60%"></td>
+          <td>Taxes</td>
+          <td style="padding: 8px; white-space: nowrap">${{cost.tax}}</td>
+        </tr>
+        <tr>
+          <td style="width: 60%"></td>
+          <td style="border-top: 2px solid #333">
+            <strong style="white-space: nowrap">Order Total</strong>
+          </td>
+          <td style="padding: 16px 8px; border-top: 2px solid #333; white-space: nowrap">
+            <strong>${{cost.total}}</strong>
+          </td>
+        </tr>
+      </table>
+      
+      <!-- Additional Info Section -->
+      <div style="margin-top: 24px; padding: 16px; background: #f8f9fa; border-radius: 8px;">
+        <h4 style="margin: 0 0 12px 0; color: #333;">Order Information</h4>
+        <p style="margin: 4px 0;"><strong>Estimated Delivery:</strong> {{estimated_delivery}}</p>
+        <p style="margin: 4px 0;"><strong>Payment Method:</strong> {{payment_method}}</p>
+        <p style="margin: 4px 0;"><strong>Shipping Address:</strong> {{shipping_address}}</p>
+      </div>
+    </div>
+  </div>
+  <div style="max-width: 600px; margin: auto">
+    <p style="color: #999; text-align: center;">
+      The email was sent to {{email}}<br />
+      You received this email because you placed an order with ShopHub<br />
+      <a href="{{website_url}}" style="color: #e74c3c;">Visit our website</a> | 
+      <a href="{{tracking_url}}" style="color: #28a745;">Track your order</a>
+    </p>
+  </div>
+</div>

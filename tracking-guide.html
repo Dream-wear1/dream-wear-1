@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking Guide - ShopHub</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .tracking-guide {
+            max-width: 800px;
+            margin: 120px auto 80px;
+            padding: 0 20px;
+        }
+        
+        .guide-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .guide-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .tracking-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .tracking-option {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tracking-option:hover {
+            border-color: #e74c3c;
+            transform: translateY(-5px);
+        }
+        
+        .tracking-option i {
+            font-size: 3rem;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+        
+        .tracking-option h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .tracking-option p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+        
+        .tracking-btn {
+            background: #e74c3c;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        
+        .tracking-btn:hover {
+            background: #c0392b;
+        }
+        
+        .how-to-section {
+            margin-top: 3rem;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .step-number {
+            background: #e74c3c;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+        }
+        
+        .quick-track {
+            background: #e8f5e8;
+            border: 2px solid #28a745;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+        
+        .quick-track h3 {
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+        
+        .quick-track-input {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .quick-track-input input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .quick-track-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .quick-track-btn:hover {
+            background: #218838;
+        }
+        
+        @media (max-width: 768px) {
+            .quick-track-input {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit;">
+                        <h2><i class="fas fa-shopping-bag"></i> ShopHub</h2>
+                    </a>
+                </div>
+                
+                <div class="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="index.html#home" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html#products" class="nav-link">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html#about" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="index.html#contact" class="nav-link">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="tracking.html" class="nav-link">Track Order</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-icons">
+                    <a href="index.html" class="back-to-store" style="background: #e74c3c; color: white; padding: 8px 16px; text-decoration: none; border-radius: 5px;">
+                        <i class="fas fa-store"></i> Back to Store
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="tracking-guide">
+        <!-- Quick Track Section -->
+        <div class="quick-track">
+            <h3><i class="fas fa-rocket"></i> Quick Track Your Order</h3>
+            <p>Enter your order number below for instant tracking:</p>
+            <div class="quick-track-input">
+                <input type="text" id="quick-order-input" placeholder="Enter order number (e.g., ORD-1234567890)">
+                <button class="quick-track-btn" onclick="quickTrack()">
+                    <i class="fas fa-search"></i> Track Now
+                </button>
+            </div>
+        </div>
+
+        <!-- Guide Header -->
+        <div class="guide-section">
+            <div class="guide-header">
+                <h1><i class="fas fa-shipping-fast"></i> Order Tracking Guide</h1>
+                <p>Multiple ways to track your ShopHub orders and stay updated on delivery status</p>
+            </div>
+
+            <!-- Tracking Options -->
+            <div class="tracking-options">
+                <div class="tracking-option">
+                    <i class="fas fa-truck"></i>
+                    <h3>Online Tracking</h3>
+                    <p>Track your order status in real-time using our online tracking system</p>
+                    <a href="tracking.html" class="tracking-btn">
+                        <i class="fas fa-external-link-alt"></i> Track Online
+                    </a>
+                </div>
+                
+                <div class="tracking-option">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Updates</h3>
+                    <p>Receive automatic email notifications for order status changes</p>
+                    <a href="#email-info" class="tracking-btn">
+                        <i class="fas fa-info-circle"></i> Learn More
+                    </a>
+                </div>
+                
+                <div class="tracking-option">
+                    <i class="fas fa-list-alt"></i>
+                    <h3>Order History</h3>
+                    <p>View all your previous orders and their current status</p>
+                    <a href="orders.html" class="tracking-btn">
+                        <i class="fas fa-history"></i> View Orders
+                    </a>
+                </div>
+            </div>
+
+            <!-- How to Track Section -->
+            <div class="how-to-section">
+                <h2><i class="fas fa-question-circle"></i> How to Track Your Order</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Find Your Order Number</h4>
+                        <p>Locate your order number in the confirmation email or receipt</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>Enter Order Number</h4>
+                        <p>Enter the order number in the tracking field above or on the tracking page</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>View Status</h4>
+                        <p>See real-time updates on your order's progress and estimated delivery</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email Information Section -->
+        <div class="guide-section" id="email-info">
+            <h2><i class="fas fa-envelope-open"></i> Email Notifications</h2>
+            <p>We'll send you email updates at each stage of your order:</p>
+            <ul style="margin: 1rem 0; padding-left: 2rem;">
+                <li><strong>Order Confirmation:</strong> Immediate confirmation with order details</li>
+                <li><strong>Processing:</strong> When your order is being prepared</li>
+                <li><strong>Shipped:</strong> When your order leaves our warehouse</li>
+                <li><strong>Out for Delivery:</strong> When your order is out for final delivery</li>
+                <li><strong>Delivered:</strong> Confirmation of successful delivery</li>
+            </ul>
+            <p><i class="fas fa-info-circle"></i> Make sure to check your spam folder if you don't receive emails.</p>
+        </div>
+
+        <!-- Order Status Meanings -->
+        <div class="guide-section">
+            <h2><i class="fas fa-info-circle"></i> Order Status Meanings</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                <div style="padding: 1rem; background: #e8f5e8; border-radius: 8px;">
+                    <h4 style="color: #28a745;"><i class="fas fa-check"></i> Confirmed</h4>
+                    <p>Order received and confirmed</p>
+                </div>
+                <div style="padding: 1rem; background: #fff3cd; border-radius: 8px;">
+                    <h4 style="color: #856404;"><i class="fas fa-cog"></i> Processing</h4>
+                    <p>Being prepared for shipment</p>
+                </div>
+                <div style="padding: 1rem; background: #d1ecf1; border-radius: 8px;">
+                    <h4 style="color: #0c5460;"><i class="fas fa-truck"></i> Shipped</h4>
+                    <p>On its way to you</p>
+                </div>
+                <div style="padding: 1rem; background: #d4edda; border-radius: 8px;">
+                    <h4 style="color: #155724;"><i class="fas fa-home"></i> Delivered</h4>
+                    <p>Successfully delivered</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function quickTrack() {
+            const orderNumber = document.getElementById('quick-order-input').value.trim();
+            if (orderNumber) {
+                window.location.href = `tracking.html?order=${orderNumber}`;
+            } else {
+                alert('Please enter an order number');
+            }
+        }
+
+        // Allow enter key for quick track
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('quick-order-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    quickTrack();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
