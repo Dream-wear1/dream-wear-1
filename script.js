@@ -7,12 +7,13 @@ let currentFilter = 'all';
 const sampleProducts = [
     {
         id: 1,
-        name: "Premium Night Suit Collection - Rose Garden",
+        name: "Premium Night Suit Collection - Pink",
         price: 1800,
         category: "nightsuits",
         image: "p1.jpg",
         rating: 4.8,
         badge: "Best Seller",
+        color: "Pink",
         sizes: ["Small", "Medium", "Large"],
         description: "Premium quality women's night suit with comfortable fit and elegant design"
     },
@@ -24,6 +25,7 @@ const sampleProducts = [
         image: "p2.jpg",
         rating: 4.9,
         badge: "Premium",
+        color: "Red",
         sizes: ["Small", "Medium", "Large"],
         description: "Premium quality women's night suit with comfortable fit and elegant design"
     },
@@ -35,6 +37,7 @@ const sampleProducts = [
         image: "p3.jpg",
         rating: 4.7,
         badge: "New",
+        color: "Maroon",
         sizes: ["Small", "Medium", "Large"],
         description: "Premium quality women's night suit with comfortable fit and elegant design"
     },
@@ -46,6 +49,7 @@ const sampleProducts = [
         image: "p4.jpg",
         rating: 4.8,
         badge: "Popular",
+        color: "Teal",
         sizes: ["Small", "Medium", "Large"],
         description: "Premium quality women's night suit with comfortable fit and elegant design"
     },
@@ -57,6 +61,7 @@ const sampleProducts = [
         image: "p5.jpg",
         rating: 4.9,
         badge: "Luxury",
+        color: "Purple",
         sizes: ["Small", "Medium", "Large"],
         description: "Premium quality women's night suit with comfortable fit and elegant design"
     }
