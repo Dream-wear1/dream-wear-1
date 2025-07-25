@@ -18,7 +18,7 @@ const sampleProducts = [
     },
     {
         id: 2,
-        name: "Premium Night Suit Collection - Midnight Blue",
+        name: "Premium Night Suit Collection - Red",
         price: 1800,
         category: "nightsuits",
         image: "p2.jpg",
@@ -29,7 +29,7 @@ const sampleProducts = [
     },
     {
         id: 3,
-        name: "Premium Night Suit Collection - Lavender Dreams",
+        name: "Premium Night Suit Collection - Maroon",
         price: 1800,
         category: "nightsuits",
         image: "p3.jpg",
@@ -40,7 +40,7 @@ const sampleProducts = [
     },
     {
         id: 4,
-        name: "Premium Night Suit Collection - Coral Sunset",
+        name: "Premium Night Suit Collection - Teal",
         price: 1800,
         category: "nightsuits",
         image: "p4.jpg",
@@ -51,7 +51,7 @@ const sampleProducts = [
     },
     {
         id: 5,
-        name: "Premium Night Suit Collection - Golden Elegance",
+        name: "Premium Night Suit Collection - Purple",
         price: 1800,
         category: "nightsuits",
         image: "p5.jpg",
